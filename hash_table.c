@@ -49,3 +49,22 @@ Hash_Item_Ptr search(int key, Hash_Table_Ptr table)
   }
   return searching_item;
 }
+
+Hash_Item_Ptr delete (int key, Hash_Table_Ptr table)
+{
+  int array_index = hash_function(key, table->size);
+  Hash_Item_Ptr item_to_delete = NULL;
+  int is_found = 0;
+  while (table->items[array_index] && !is_found)
+  {
+    if (table->items[array_index]->key == key)
+    {
+      is_found = 1;
+      item_to_delete = table->items[array_index];
+      table->items[array_index] = NULL;
+    }
+    array_index++;
+    array_index %= table->size;
+  }
+  return item_to_delete;
+}

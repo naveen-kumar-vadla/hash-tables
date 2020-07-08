@@ -4,7 +4,7 @@ void display_hash_item(Hash_Item_Ptr item);
 void display_hash_item(Hash_Item_Ptr item)
 {
   if (item)
-    printf("Key = %d , Value = %d\n", item->key, item->value);
+    printf("Key = %2d , Value = %2d\n", item->key, item->value);
   else
     printf("Key = -- , Value = --\n");
 }
@@ -28,8 +28,8 @@ int main(void)
   insert(34, 10, table);
   insert(89, 20, table);
   insert(29, 30, table);
-  insert(90, 40, table);
-  insert(83, 50, table);
+  insert(5, 40, table);
+  insert(13, 50, table);
 
   printf("\nHash Table : \n");
   display_hash_table(table);
@@ -37,6 +37,10 @@ int main(void)
   printf("\nSearching ...\n");
   display_hash_item(search(34, table));
   display_hash_item(search(3, table));
+
+  printf("\nDeleting ...\n");
+  display_hash_item(delete(34, table));
+  display_hash_item(delete(3, table));
 
   printf("\nHash Table : \n");
   display_hash_table(table);
