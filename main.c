@@ -34,5 +34,12 @@ int main(void)
   printf("\nHash Table : \n");
   display_hash_table(table);
 
+  printf("\nSearching ...\n");
+  display_hash_item(search(34, table));
+  display_hash_item(search(3, table));
+
+  printf("\nHash Table : \n");
+  display_hash_table(table);
+
   return 0;
 }

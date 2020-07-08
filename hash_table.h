@@ -25,6 +25,6 @@ Hash_Item_Ptr create_hash_item(int key, int value);
 int hash_function(int key, int size);
 
 void insert(int key, int value, Hash_Table_Ptr table);
-
+Hash_Item_Ptr search(int key, Hash_Table_Ptr table);
 
 #endif

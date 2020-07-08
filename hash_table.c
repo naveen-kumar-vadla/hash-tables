@@ -31,3 +31,21 @@ void insert(int key, int value, Hash_Table_Ptr table)
   }
   table->items[array_index] = create_hash_item(key, value);
 }
+
+Hash_Item_Ptr search(int key, Hash_Table_Ptr table)
+{
+  int array_index = hash_function(key, table->size);
+  Hash_Item_Ptr searching_item = NULL;
+  int is_found = 0;
+  while (table->items[array_index] && !is_found)
+  {
+    if (table->items[array_index]->key == key)
+    {
+      searching_item = table->items[array_index];
+      is_found = 1;
+    }
+    array_index++;
+    array_index %= table->size;
+  }
+  return searching_item;
+}
