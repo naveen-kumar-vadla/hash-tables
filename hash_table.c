@@ -20,3 +20,14 @@ int hash_function(int key, int size)
 {
   return key % size;
 }
+
+void insert(int key, int value, Hash_Table_Ptr table)
+{
+  int array_index = hash_function(key, table->size);
+  while (table->items[array_index] && table->items[array_index]->key != key)
+  {
+    array_index++;
+    array_index %= table->size;
+  }
+  table->items[array_index] = create_hash_item(key, value);
+}

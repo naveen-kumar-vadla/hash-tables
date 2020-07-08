@@ -24,6 +24,13 @@ int main(void)
 {
   Hash_Table_Ptr table = create_hash_table(50);
 
+  printf("\nInserting ...\n");
+  insert(34, 10, table);
+  insert(89, 20, table);
+  insert(29, 30, table);
+  insert(90, 40, table);
+  insert(83, 50, table);
+
   printf("\nHash Table : \n");
   display_hash_table(table);
 
