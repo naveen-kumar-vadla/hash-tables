@@ -22,5 +22,6 @@ typedef Hash_Table *Hash_Table_Ptr;
 Hash_Table_Ptr create_hash_table(int size);
 Hash_Item_Ptr create_hash_item(int key, int value);
 
+int hash_function(int key, int size);
 
 #endif

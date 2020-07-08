@@ -15,3 +15,8 @@ Hash_Item_Ptr create_hash_item(int key, int value)
   hash_item->value = value;
   return hash_item;
 }
+
+int hash_function(int key, int size)
+{
+  return key % size;
+}
