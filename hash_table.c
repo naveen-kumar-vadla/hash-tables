@@ -30,6 +30,13 @@ Hash_Item_Ptr search(int key, Hash_Table_Ptr table)
   return searching_item;
 }
 
+Hash_Item_Ptr delete (int key, Hash_Table_Ptr table)
+{
+  int array_index = hash_function(key, table->size);
+  Hash_Item_Ptr item_deleted = remove_from_hash_list(table->items[array_index], key);
+  return item_deleted;
+}
+
 void display_hash_table(Hash_Table_Ptr table)
 {
   for (int i = 0; i < table->size; i++)

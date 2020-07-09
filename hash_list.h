@@ -26,10 +26,10 @@ Hash_Item_Ptr create_hash_item(int key, int value);
 Hash_List_Ptr create_hash_list();
 
 Hash_Item_Ptr get_hash_item_of(Hash_List_Ptr list, int key);
+Hash_Item_Ptr remove_from_hash_list(Hash_List_Ptr list, int key);
 void add_to_hash_list(int key, int value, Hash_List_Ptr hash_list);
 
 void display_hash_item(Hash_Item_Ptr item);
 void display_hash_list(Hash_List_Ptr hash_list);
-
 
 #endif

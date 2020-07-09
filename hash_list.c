@@ -21,7 +21,9 @@ Hash_List_Ptr create_hash_list()
 Hash_Item_Ptr get_hash_item_of(Hash_List_Ptr list, int key)
 {
   if (list == NULL)
+  {
     return NULL;
+  }
   Hash_Item_Ptr p_walk = list->head;
   Hash_Item_Ptr matching_node = NULL;
   int is_found = 0;
@@ -51,12 +53,32 @@ void add_to_hash_list(int key, int value, Hash_List_Ptr hash_list)
   hash_list->count++;
 }
 
+Hash_Item_Ptr remove_from_hash_list(Hash_List_Ptr list, int key)
+{
+  Hash_Item_Ptr item_to_delete = get_hash_item_of(list, key);
+  if (item_to_delete != NULL)
+  {
+    Hash_Item_Ptr *ptr_to_set = &list->head;
+    Hash_Item_Ptr previous_item = item_to_delete->previous;
+    if (previous_item)
+    {
+      ptr_to_set = &previous_item->next;
+    }
+    (*ptr_to_set) = item_to_delete->next;
+  }
+  return item_to_delete;
+}
+
 void display_hash_item(Hash_Item_Ptr item)
 {
   if (item)
+  {
     printf("%2d=%2d ", item->key, item->value);
+  }
   else
+  {
     printf("--=-- ");
+  }
 }
 
 void display_hash_list(Hash_List_Ptr hash_list)

@@ -1,8 +1,6 @@
 #ifndef __HASH_TABLE_H__
 #define __HASH_TABLE_H__
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "hash_list.h"
 
 typedef struct hash_table

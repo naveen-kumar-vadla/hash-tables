@@ -21,5 +21,12 @@ int main(void)
   display_hash_item(search(3, table));
   printf("\n");
 
+  printf("\nDeleting ...\n");
+  display_hash_item(delete (34, table));
+  display_hash_item(delete (3, table));
+
+  printf("\nHash Table : \n");
+  display_hash_table(table);
+
   return 0;
 }
