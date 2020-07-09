@@ -15,5 +15,11 @@ int main(void)
   printf("\nHash Table : \n");
   display_hash_table(table);
 
+  printf("\nSearching ...\n");
+  display_hash_item(search(34, table));
+  printf("\n");
+  display_hash_item(search(3, table));
+  printf("\n");
+
   return 0;
 }

@@ -23,6 +23,13 @@ void insert(int key, int value, Hash_Table_Ptr table)
   add_to_hash_list(key, value, table->items[array_index]);
 }
 
+Hash_Item_Ptr search(int key, Hash_Table_Ptr table)
+{
+  int array_index = hash_function(key, table->size);
+  Hash_Item_Ptr searching_item = get_hash_item_of(table->items[array_index], key);
+  return searching_item;
+}
+
 void display_hash_table(Hash_Table_Ptr table)
 {
   for (int i = 0; i < table->size; i++)
