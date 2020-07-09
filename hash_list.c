@@ -41,6 +41,12 @@ Hash_Item_Ptr get_hash_item_of(Hash_List_Ptr list, int key)
 
 void add_to_hash_list(int key, int value, Hash_List_Ptr hash_list)
 {
+  Hash_Item_Ptr matching_node = get_hash_item_of(hash_list, key);
+  if (matching_node)
+  {
+    matching_node->value = value;
+    return;
+  }
   Hash_Item_Ptr hash_item = create_hash_item(key, value);
   Hash_Item_Ptr *ptr_to_set = &hash_list->head;
   if (hash_list->head != NULL)
@@ -65,6 +71,7 @@ Hash_Item_Ptr remove_from_hash_list(Hash_List_Ptr list, int key)
       ptr_to_set = &previous_item->next;
     }
     (*ptr_to_set) = item_to_delete->next;
+    item_to_delete->next->previous = item_to_delete->previous;
   }
   return item_to_delete;
 }

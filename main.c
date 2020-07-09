@@ -11,6 +11,7 @@ int main(void)
   insert(29, 30, table);
   insert(5, 40, table);
   insert(13, 50, table);
+  insert(34, 100, table);
 
   printf("\nHash Table : \n");
   display_hash_table(table);
