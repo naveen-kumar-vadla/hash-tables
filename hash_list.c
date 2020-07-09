@@ -21,7 +21,7 @@ Hash_List_Ptr create_hash_list()
 Hash_Item_Ptr get_hash_item_of(Hash_List_Ptr list, int key)
 {
   if (list == NULL)
-  return NULL;
+    return NULL;
   Hash_Item_Ptr p_walk = list->head;
   Hash_Item_Ptr matching_node = NULL;
   int is_found = 0;
@@ -46,6 +46,7 @@ void add_to_hash_list(int key, int value, Hash_List_Ptr hash_list)
     ptr_to_set = &hash_list->last->next;
   }
   (*ptr_to_set) = hash_item;
+  hash_item->previous = hash_list->last;
   hash_list->last = hash_item;
   hash_list->count++;
 }

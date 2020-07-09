@@ -9,6 +9,7 @@ typedef struct hash_item
   int key;
   int value;
   struct hash_item *next;
+  struct hash_item *previous;
 } Hash_Item;
 
 typedef struct hash_list
