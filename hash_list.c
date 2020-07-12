@@ -1,6 +1,6 @@
 #include "hash_table.h"
 
-Hash_Item_Ptr create_hash_item(int key, int value)
+Hash_Item_Ptr create_hash_item(char_ptr key, char_ptr value)
 {
   Hash_Item_Ptr hash_item = malloc(sizeof(Hash_Item));
   hash_item->key = key;
@@ -18,7 +18,7 @@ Hash_List_Ptr create_hash_list()
   return hash_list;
 }
 
-Hash_Item_Ptr get_hash_item_of(Hash_List_Ptr list, int key)
+Hash_Item_Ptr get_hash_item_of(Hash_List_Ptr list, char_ptr key)
 {
   if (list == NULL)
   {
@@ -29,7 +29,7 @@ Hash_Item_Ptr get_hash_item_of(Hash_List_Ptr list, int key)
   int is_found = 0;
   while (p_walk != NULL && !is_found)
   {
-    if (p_walk->key == key)
+    if (strcmp(p_walk->key, key) == 0)
     {
       matching_node = p_walk;
       is_found = 1;
@@ -39,7 +39,7 @@ Hash_Item_Ptr get_hash_item_of(Hash_List_Ptr list, int key)
   return matching_node;
 }
 
-void add_to_hash_list(int key, int value, Hash_List_Ptr hash_list)
+void add_to_hash_list(char_ptr key, char_ptr value, Hash_List_Ptr hash_list)
 {
   Hash_Item_Ptr matching_node = get_hash_item_of(hash_list, key);
   if (matching_node)
@@ -59,7 +59,7 @@ void add_to_hash_list(int key, int value, Hash_List_Ptr hash_list)
   hash_list->count++;
 }
 
-Hash_Item_Ptr remove_from_hash_list(Hash_List_Ptr list, int key)
+Hash_Item_Ptr remove_from_hash_list(Hash_List_Ptr list, char_ptr key)
 {
   Hash_Item_Ptr item_to_delete = get_hash_item_of(list, key);
   if (item_to_delete != NULL)
@@ -80,11 +80,11 @@ void display_hash_item(Hash_Item_Ptr item)
 {
   if (item)
   {
-    printf("%2d=%2d ", item->key, item->value);
+    printf("%s=%s, ", item->key, item->value);
   }
   else
   {
-    printf("--=-- ");
+    printf("--=--, ");
   }
 }
 

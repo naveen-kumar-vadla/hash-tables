@@ -8,12 +8,17 @@ Hash_Table_Ptr create_hash_table(int size)
   return hash_table;
 }
 
-int hash_function(int key, int size)
+int hash_function(char_ptr key, int size)
 {
-  return key % size;
+  unsigned long int hash = 0;
+  for (int i = 0; i < strlen(key); i++)
+  {
+    hash += key[i];
+  }
+  return hash % size;
 }
 
-void insert(int key, int value, Hash_Table_Ptr table)
+void insert(char_ptr key, char_ptr value, Hash_Table_Ptr table)
 {
   int array_index = hash_function(key, table->size);
   if (table->items[array_index] == NULL)
@@ -23,14 +28,14 @@ void insert(int key, int value, Hash_Table_Ptr table)
   add_to_hash_list(key, value, table->items[array_index]);
 }
 
-Hash_Item_Ptr search(int key, Hash_Table_Ptr table)
+Hash_Item_Ptr search(char_ptr key, Hash_Table_Ptr table)
 {
   int array_index = hash_function(key, table->size);
   Hash_Item_Ptr searching_item = get_hash_item_of(table->items[array_index], key);
   return searching_item;
 }
 
-Hash_Item_Ptr delete (int key, Hash_Table_Ptr table)
+Hash_Item_Ptr delete (char_ptr key, Hash_Table_Ptr table)
 {
   int array_index = hash_function(key, table->size);
   Hash_Item_Ptr item_deleted = remove_from_hash_list(table->items[array_index], key);
